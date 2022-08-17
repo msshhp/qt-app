@@ -218,6 +218,21 @@
      <height>521</height>
     </rect>
    </property>
+   <property name="acceptDrops">
+    <bool>true</bool>
+   </property>
+   <property name="dragEnabled">
+    <bool>true</bool>
+   </property>
+   <property name="dragDropMode">
+    <enum>QAbstractItemView::InternalMove</enum>
+   </property>
+   <property name="defaultDropAction">
+    <enum>Qt::TargetMoveAction</enum>
+   </property>
+   <property name="selectionMode">
+    <enum>QAbstractItemView::SingleSelection</enum>
+   </property>
   </widget>
   <widget class="QPushButton" name="addButton">
    <property name="geometry">

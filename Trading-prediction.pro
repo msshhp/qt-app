@@ -9,11 +9,17 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    delegate.cpp \
+    editorwidget.cpp \
     main.cpp \
+    mainlistview.cpp \
     mainwidget.cpp \
     mainwindow.cpp
 
 HEADERS += \
+    delegate.h \
+    editorwidget.h \
+    mainlistview.h \
     mainwidget.h \
     mainwindow.h
 
