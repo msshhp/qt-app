@@ -32,6 +32,8 @@ MainListView::MainListView(QWidget* parent)
 
     setFlow(QListView::Flow::LeftToRight);
 
+    //    setEditTriggers(EditTrigger::AllEditTriggers);
+
     addItem(1770, 800, 50);
     addItem(1720, 800, 50);
     addItem(1970, 800, 53);
@@ -59,7 +61,7 @@ void MainListView::addItem(const int& price, const int& position, const int& siz
 
     item->setData(QString::number(position), Qt::UserRole + 1);
     item->setData(QString::number(size), Qt::UserRole + 2);
-    item->setFlags(Qt::ItemFlag::ItemIsDragEnabled | Qt::ItemFlag::ItemIsDropEnabled);
+    item->setFlags(Qt::ItemFlag::ItemIsEditable | Qt::ItemFlag::ItemIsEnabled | Qt::ItemFlag::ItemIsSelectable);
     qDebug() << item->data() << item->data(Qt::UserRole + 2);
 
     static_cast<QStandardItemModel*>(model())->appendRow(item);

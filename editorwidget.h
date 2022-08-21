@@ -1,45 +1,25 @@
 #ifndef EDITORWIDGET_H
 #define EDITORWIDGET_H
 
-#include <QCheckBox>
-#include <QComboBox>
+#include <QDoubleSpinBox>
 #include <QLineEdit>
-#include <QWidget>
+#include <QPushButton>
 
 class EditorWidget : public QWidget {
     Q_OBJECT
 public:
     explicit EditorWidget(QWidget* parent = nullptr);
 
-    int currentIndex()
-    {
-        return comboBox->currentIndex();
-    }
-    void setCurrentIndex(int index)
-    {
-        comboBox->setCurrentIndex(index);
-    }
-    QString text() const
-    {
-        return lineBox->text();
-    }
-    void setText(const QString& text)
-    {
-        lineBox->setText(text);
-    }
-    Qt::CheckState checkState() const
-    {
-        return checkBox->checkState();
-    }
-    void setCheckState(Qt::CheckState state)
-    {
-        checkBox->setCheckState(state);
-    }
+    void setPrice(const int& price);
+    void setPosition(const int& position);
+    int getPosition() const;
+    void setSize(const double& size);
+    double getSize() const;
 
 private:
-    QCheckBox* checkBox;
-    QLineEdit* lineBox;
-    QComboBox* comboBox;
+    QPushButton* pushButton;
+    QLineEdit* lineEdit;
+    QDoubleSpinBox* dSpinBox;
 };
 
 #endif // EDITORWIDGET_H

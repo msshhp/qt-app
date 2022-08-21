@@ -1,7 +1,7 @@
 #ifndef DELEGATE_H
 #define DELEGATE_H
 
-#include <QPushButton>
+#include "editorwidget.h"
 #include <QStyledItemDelegate>
 
 class Delegate : public QStyledItemDelegate {
@@ -16,10 +16,13 @@ public:
     QWidget* createEditor(QWidget* parent, const QStyleOptionViewItem& option,
         const QModelIndex& index) const override;
     void setEditorData(QWidget* editor, const QModelIndex& index) const override;
-    //    void setModelData(QWidget *editor, QAbstractItemModel *model,
-    //                      const QModelIndex &index) const override;
+    void setModelData(QWidget* editor, QAbstractItemModel* model,
+        const QModelIndex& index) const override;
+    bool editorEvent(QEvent* event, QAbstractItemModel* model,
+        const QStyleOptionViewItem& option, const QModelIndex& index) override;
 
-    QPushButton* btn;
+private:
+    EditorWidget* editorWidget;
 };
 
 #endif // DELEGATE_H
