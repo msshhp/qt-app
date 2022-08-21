@@ -62,9 +62,13 @@ void Delegate::setEditorData(QWidget* editor, const QModelIndex& index) const
     qDebug() << __FUNCTION__ << editor << index.data();
 
     if (auto widget = qobject_cast<EditorWidget*>(editor)) {
+        qDebug() << __FUNCTION__ << "qobject_cast OK" << widget << index.data(Qt::UserRole + 1) << index.data(Qt::UserRole + 2);
         widget->setPrice(index.data().toInt());
         widget->setPosition(index.data(Qt::UserRole + 1).toInt());
         widget->setSize(index.data(Qt::UserRole + 2).toDouble());
+        qDebug() << __FUNCTION__ << "qobject_cast OK" << widget->getPosition() << widget->getSize();
+    } else {
+        qDebug() << __FUNCTION__ << "qobject_cast FAILED";
     }
 
     //    QStyledItemDelegate::setEditorData(editor, index);
@@ -75,8 +79,14 @@ void Delegate::setModelData(QWidget* editor, QAbstractItemModel* model, const QM
     qDebug() << __FUNCTION__ << editor << model;
 
     if (auto widget = qobject_cast<EditorWidget*>(editor)) {
+        qDebug() << __FUNCTION__ << "qobject_cast OK" << widget << widget->getPosition() << widget->getSize() << model;
+        model->blockSignals(true);
         model->setData(index, widget->getPosition(), Qt::UserRole + 1);
+        model->blockSignals(false);
         model->setData(index, widget->getSize(), Qt::UserRole + 2);
+        qDebug() << __FUNCTION__ << "qobject_cast OK11111111" << widget << widget->getPosition() << widget->getSize() << model << model->data(index, Qt::UserRole + 1) << model->data(index, Qt::UserRole + 2);
+    } else {
+        qDebug() << __FUNCTION__ << "qobject_cast FAILED";
     }
 
     //    QStyledItemDelegate::setModelData(editor, model, index);
