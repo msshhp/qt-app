@@ -1,1 +1,1 @@
-# Trading-prediction
+# Some Qt example
